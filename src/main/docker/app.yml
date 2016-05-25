@@ -1,0 +1,15 @@
+version: '2'
+services:
+    ffbui-app:
+        image: ffbui
+        external_links:
+            - ffbui-mysql:mysql
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/ffbui?useUnicode=true&characterEncoding=utf8&useSSL=false
+        ports:
+            - 8080:8080
+    ffbui-mysql:
+        extends:
+            file: mysql.yml
+            service: ffbui-mysql
